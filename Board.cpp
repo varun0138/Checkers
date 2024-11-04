@@ -5,6 +5,26 @@ Board::Board() {
     createBoard();
 }
 
+void Board::move(std::shared_ptr<Piece> piece, unsigned int row, unsigned col) {
+    m_board[row][col] = std::make_shared<Piece>(row, col, piece->getColor());
+
+    if(row == 0 || row == ROWS - 1) {
+        if(piece->getColor() == WHITE) {
+            whiteKings++;
+        }
+        else { // piece->getColor() == RED
+            redKings++;
+        }
+        m_board[row][col]->makeKing();
+    }
+
+    m_board[piece->getRow()][piece->getCol()] = nullptr;
+}
+
+std::shared_ptr<Piece> Board::getPiece(unsigned int row, unsigned int col) const {
+    return m_board[row][col];
+}
+
 void Board::createBoard() {
     m_board = std::vector<std::vector<std::shared_ptr<Piece>>>(ROWS, std::vector<std::shared_ptr<Piece>>(COLS, nullptr));
 

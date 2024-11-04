@@ -28,5 +28,9 @@ public:
     void calulatePosititon();
     void makeKing();
 
+    unsigned int getRow() const;
+    unsigned int getCol() const;
+    const sf::Color& getColor() const;
+
     void draw(sf::RenderTarget& target);
 };

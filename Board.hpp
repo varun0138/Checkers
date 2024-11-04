@@ -22,6 +22,10 @@ private:
 public:
     Board();
 
+    void move(std::shared_ptr<Piece> piece, unsigned int row, unsigned col);
+    
+    std::shared_ptr<Piece> getPiece(unsigned int row, unsigned int col) const;
+
     void createBoard();
     void draw(sf::RenderTarget& target);
 };
